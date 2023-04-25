@@ -2,6 +2,7 @@
 using AccesoDatos.Controladores;
 using AccesoDatos.Entidades;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -17,7 +18,18 @@ namespace VentasTransaction
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GuardarVenta();
+            ObtenerListaProductos();
+        }
+
+        private void ObtenerListaProductos()
+        {
+            AccesoProductos accesoProductos = new AccesoProductos();
+            List<Productos> productos = accesoProductos.ObtenerProductos();
+            foreach (Productos producto in productos)
+            {
+
+                Console.WriteLine(producto.Id + "\t||\t" + producto.Descripcion + "\t||\t" + producto.PrecioUnitario);
+            }
         }
 
         private void CrearCliente()

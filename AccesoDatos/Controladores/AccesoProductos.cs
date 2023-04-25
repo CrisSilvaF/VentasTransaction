@@ -117,13 +117,14 @@ namespace AccesoDatos.Controladores
             }
         }
 
-        public Productos ObtenerProducto(int id)
+        public List<Productos> ObtenerProductos()
         {
             try
             {
-                string query = "SELECT Id, Descripcion, PrecioUnitario FROM Existencias WHERE Id = @Id";
+                List<Productos> productos = new List<Productos>();
+                string query = "SELECT * FROM Productos";
 
-                using (SqlConnection con = new SqlConnection(query))
+                using (SqlConnection con = new SqlConnection(Conexion.ConnectionString))
                 {
                     con.Open();
 
@@ -131,7 +132,7 @@ namespace AccesoDatos.Controladores
                     {
                         cmd.CommandType = CommandType.Text;
 
-                        cmd.Parameters.AddWithValue("@Id", id);
+                        //cmd.Parameters.AddWithValue("@Id", id);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -145,14 +146,15 @@ namespace AccesoDatos.Controladores
                                     producto.Descripcion = reader.GetString(1);
                                     producto.PrecioUnitario = reader.GetDecimal(2);
 
-                                    return producto;
+                                    productos.Add(producto);
+                                    //return producto;
                                 }
                             }
                         }
                     }
                 }
 
-                return null;
+                return productos;
             }
             catch (Exception ex)
             {
