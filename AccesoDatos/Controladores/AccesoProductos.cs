@@ -96,19 +96,29 @@ namespace AccesoDatos.Controladores
             {
                 string query = "DELETE FROM Productos where Id = @Id";
 
-                using (SqlConnection con = new SqlConnection(query))
+                using (SqlConnection con = new SqlConnection(Conexion.ConnectionString))
                 {
                     con.Open();
                     SqlTransaction transaction = con.BeginTransaction();
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Transaction = transaction;
+                        try
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Transaction = transaction;
 
-                        cmd.Parameters.AddWithValue("@Id", id);
+                            cmd.Parameters.AddWithValue("@Id", id);
 
-                        cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw new Exception(ex.Message);
+                        }
+                        
                     }
                 }
             }
@@ -118,42 +128,12 @@ namespace AccesoDatos.Controladores
             }
         }
 
-        public List<Productos> ObtenerProductos()
+        public SqlDataAdapter ObtenerProductos()
         {
             try
-            {
-                List<Productos> productos = new List<Productos>();
+            {   
                 string query = "SELECT * FROM Productos";
-
-                using (SqlConnection con = new SqlConnection(Conexion.ConnectionString))
-                {
-                    con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.CommandType = CommandType.Text;
-
-                        //cmd.Parameters.AddWithValue("@Id", id);
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                while (reader.Read())
-                                {
-                                    Productos producto = new Productos();
-
-                                    producto.Id = reader.GetInt32(0);
-                                    producto.Descripcion = reader.GetString(1);
-                                    producto.PrecioUnitario = reader.GetDecimal(2);
-
-                                    productos.Add(producto);
-                                    //return producto;
-                                }
-                            }
-                        }
-                    }
-                }
+                SqlDataAdapter productos = new SqlDataAdapter(query, Conexion.ConnectionString);
 
                 return productos;
             }

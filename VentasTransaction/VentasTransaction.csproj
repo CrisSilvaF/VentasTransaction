@@ -66,6 +66,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\AccesoDatos.Entidades.Clientes1.datasource" />
     <None Include="Properties\DataSources\AccesoDatos.Entidades.Productos.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

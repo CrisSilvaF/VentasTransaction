@@ -12,6 +12,20 @@ namespace AccesoDatos.Controladores
     public class AccesoClientes
     {
         // Metodos De Cliente (Crear, Actualizar, Eliminar) //
+        public SqlDataAdapter ObtenerClientes()
+        {
+            try
+            {
+                string query = "SELECT * FROM Clientes";
+                SqlDataAdapter clientes = new SqlDataAdapter(query, Conexion.ConnectionString);
+
+                return clientes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void CrearCliente(Clientes cliente)
         {
             try
@@ -58,20 +72,27 @@ namespace AccesoDatos.Controladores
                 // Query para Borrar un cliente //
                 string query = "DELETE FROM Clientes where Id = @Id";
 
-                using (SqlConnection con = new SqlConnection(query))
+                using (SqlConnection con = new SqlConnection(Conexion.ConnectionString))
                 {
-                    SqlTransaction transaction = con.BeginTransaction();
                     con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    SqlTransaction transaction = con.BeginTransaction();
+                    try
                     {
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Transaction = transaction;
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Transaction = transaction;
 
-                        cmd.Parameters.AddWithValue("@Id", id);
+                            cmd.Parameters.AddWithValue("@Id", id);
 
-                        cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
+                        }
+                        transaction.Commit();
+                    }catch(Exception ex)
+                    {
+                        transaction.Rollback();
                     }
+                    
                 }
             }
             catch (Exception ex)

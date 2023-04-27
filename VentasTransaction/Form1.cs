@@ -13,7 +13,36 @@ namespace VentasTransaction
     {
         public Form1()
         {
+            
             InitializeComponent();
+            
+            try
+            {
+                CargarProductos();
+                CargarClientes();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void CargarProductos()
+        {
+            AccesoProductos accesoProductos = new AccesoProductos();
+            SqlDataAdapter adapter = accesoProductos.ObtenerProductos();
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            ProductosGrid.DataSource = dt;
+        }
+
+        private void CargarClientes()
+        {
+            AccesoClientes accesoClientes = new AccesoClientes();
+            SqlDataAdapter adapter = accesoClientes.ObtenerClientes();
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            ClientesGrid.DataSource = dt;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -22,6 +51,7 @@ namespace VentasTransaction
             if (!string.IsNullOrEmpty(client))
             {
                 AgregarCliente(client);
+                CargarClientes();
             }
             
         }
@@ -34,26 +64,45 @@ namespace VentasTransaction
             accesoClientes.CrearCliente(cliente);
         }
 
-        private void ObtenerListaProductos()
+        private void BorrarCLiente()
         {
-            AccesoProductos accesoProductos = new AccesoProductos();
-            List<Productos> productos = accesoProductos.ObtenerProductos();
-            foreach (Productos producto in productos)
+            try
+            {
+                int clienteId;
+                if (int.TryParse(ClientesGrid.SelectedRows[0].Cells[0].Value.ToString(), out clienteId))
+                {
+                    AccesoClientes accesoClientes = new AccesoClientes();
+                    accesoClientes.EliminarCliente(clienteId);
+                    CargarClientes();
+                }
+            }
+            catch(Exception ex)
             {
 
-                Console.WriteLine(producto.Id + "\t||\t" + producto.Descripcion + "\t||\t" + producto.PrecioUnitario);
             }
         }
 
-        
-
         private void GuardarProducto()
         {
-            Productos producto = new Productos();
-            producto.Descripcion = "Producto Preuba";
-            producto.PrecioUnitario = 10.20m;
-            AccesoProductos accesoProductos = new AccesoProductos();
-            accesoProductos.CrearProducto(producto);
+            try
+            {
+                Productos producto = new Productos();
+                producto.Descripcion = descriptionText.Text;
+                decimal number;
+                if (decimal.TryParse(priceText.Text, out number))
+                {
+                    producto.PrecioUnitario = number;
+                }
+                AccesoProductos accesoProductos = new AccesoProductos();
+                accesoProductos.CrearProducto(producto);
+                descriptionText.Text = "";
+                priceText.Text = "";
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
         }
 
         //Debemos reubicar este metodo 
@@ -84,6 +133,44 @@ namespace VentasTransaction
 
             AccesoVentas accesoVentas = new AccesoVentas();
             accesoVentas.crearVenta(venta);
+        }
+
+        private void agregarProducto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GuardarProducto();
+                CargarProductos();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+        }
+
+        private void borrarProducto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int productId;
+                if(int.TryParse(ProductosGrid.SelectedRows[0].Cells[0].Value.ToString(), out productId))
+                {
+                    AccesoProductos accesoProductos = new AccesoProductos();
+                    accesoProductos.EliminarProducto(productId);
+                    CargarProductos();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+        }
+
+        private void borrarCliente_Click(object sender, EventArgs e)
+        {
+            BorrarCLiente();
         }
     }
 }

@@ -30,31 +30,43 @@
         {
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ClientesGrid = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ProductosGrid = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.descriptionText = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.priceText = new System.Windows.Forms.TextBox();
+            this.agregarProducto = new System.Windows.Forms.Button();
+            this.borrarProducto = new System.Windows.Forms.Button();
+            this.actualizarProducto = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.borrarCliente = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientesGrid)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductosGrid)).BeginInit();
+            this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1010, 647);
+            this.button1.Location = new System.Drawing.Point(774, 639);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(156, 35);
@@ -62,75 +74,6 @@
             this.button1.Text = "Producto Prueba";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1161, 623);
-            this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 32);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1076, 587);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Ventas";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 32);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1153, 587);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Productos";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn,
-            this.precioUnitarioDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.productosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(887, 575);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.button2);
-            this.tabPage3.Controls.Add(this.label2);
-            this.tabPage3.Controls.Add(this.textBox2);
-            this.tabPage3.Location = new System.Drawing.Point(4, 32);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1153, 587);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Clientes";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -141,56 +84,23 @@
             this.tabPage4.Text = "Folios";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // idDataGridViewTextBoxColumn
+            // tabPage3
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripcionDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // precioUnitarioDataGridViewTextBoxColumn
-            // 
-            this.precioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "PrecioUnitario";
-            this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "PrecioUnitario";
-            this.precioUnitarioDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.precioUnitarioDataGridViewTextBoxColumn.Name = "precioUnitarioDataGridViewTextBoxColumn";
-            this.precioUnitarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.precioUnitarioDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // productosBindingSource
-            // 
-            this.productosBindingSource.DataSource = typeof(AccesoDatos.Entidades.Productos);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(899, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(903, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(244, 26);
-            this.textBox1.TabIndex = 2;
+            this.tabPage3.Controls.Add(this.borrarCliente);
+            this.tabPage3.Controls.Add(this.ClientesGrid);
+            this.tabPage3.Controls.Add(this.button2);
+            this.tabPage3.Controls.Add(this.label2);
+            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 32);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1153, 587);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Clientes";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(970, 48);
+            this.textBox2.Location = new System.Drawing.Point(970, 32);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(180, 26);
             this.textBox2.TabIndex = 0;
@@ -206,12 +116,220 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(970, 120);
+            this.button2.Location = new System.Drawing.Point(970, 64);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 35);
+            this.button2.Size = new System.Drawing.Size(180, 36);
             this.button2.TabIndex = 2;
             this.button2.Text = "Agregar Cliente";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // ClientesGrid
+            // 
+            this.ClientesGrid.AllowUserToAddRows = false;
+            this.ClientesGrid.AllowUserToDeleteRows = false;
+            this.ClientesGrid.AutoGenerateColumns = false;
+            this.ClientesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ClientesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.nombreDataGridViewTextBoxColumn});
+            this.ClientesGrid.DataSource = this.clientesBindingSource;
+            this.ClientesGrid.Location = new System.Drawing.Point(4, 9);
+            this.ClientesGrid.MultiSelect = false;
+            this.ClientesGrid.Name = "ClientesGrid";
+            this.ClientesGrid.ReadOnly = true;
+            this.ClientesGrid.RowHeadersWidth = 62;
+            this.ClientesGrid.RowTemplate.Height = 28;
+            this.ClientesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ClientesGrid.Size = new System.Drawing.Size(956, 575);
+            this.ClientesGrid.TabIndex = 3;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.actualizarProducto);
+            this.tabPage2.Controls.Add(this.borrarProducto);
+            this.tabPage2.Controls.Add(this.agregarProducto);
+            this.tabPage2.Controls.Add(this.priceText);
+            this.tabPage2.Controls.Add(this.descriptionText);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.ProductosGrid);
+            this.tabPage2.Location = new System.Drawing.Point(4, 32);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1153, 587);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Productos";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ProductosGrid
+            // 
+            this.ProductosGrid.AllowUserToAddRows = false;
+            this.ProductosGrid.AllowUserToDeleteRows = false;
+            this.ProductosGrid.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ProductosGrid.AutoGenerateColumns = false;
+            this.ProductosGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.ProductosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProductosGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.descripcionDataGridViewTextBoxColumn,
+            this.precioUnitarioDataGridViewTextBoxColumn});
+            this.ProductosGrid.DataSource = this.productosBindingSource;
+            this.ProductosGrid.Location = new System.Drawing.Point(6, 6);
+            this.ProductosGrid.MultiSelect = false;
+            this.ProductosGrid.Name = "ProductosGrid";
+            this.ProductosGrid.ReadOnly = true;
+            this.ProductosGrid.RowHeadersWidth = 62;
+            this.ProductosGrid.RowTemplate.Height = 28;
+            this.ProductosGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ProductosGrid.Size = new System.Drawing.Size(887, 575);
+            this.ProductosGrid.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(899, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nombre del producto";
+            // 
+            // descriptionText
+            // 
+            this.descriptionText.Location = new System.Drawing.Point(903, 29);
+            this.descriptionText.Name = "descriptionText";
+            this.descriptionText.Size = new System.Drawing.Size(244, 26);
+            this.descriptionText.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(903, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Precio Unitario";
+            // 
+            // priceText
+            // 
+            this.priceText.Location = new System.Drawing.Point(903, 86);
+            this.priceText.Name = "priceText";
+            this.priceText.Size = new System.Drawing.Size(244, 26);
+            this.priceText.TabIndex = 4;
+            // 
+            // agregarProducto
+            // 
+            this.agregarProducto.Location = new System.Drawing.Point(903, 119);
+            this.agregarProducto.Name = "agregarProducto";
+            this.agregarProducto.Size = new System.Drawing.Size(244, 36);
+            this.agregarProducto.TabIndex = 5;
+            this.agregarProducto.Text = "Agregar";
+            this.agregarProducto.UseVisualStyleBackColor = true;
+            this.agregarProducto.Click += new System.EventHandler(this.agregarProducto_Click);
+            // 
+            // borrarProducto
+            // 
+            this.borrarProducto.Location = new System.Drawing.Point(903, 161);
+            this.borrarProducto.Name = "borrarProducto";
+            this.borrarProducto.Size = new System.Drawing.Size(244, 36);
+            this.borrarProducto.TabIndex = 6;
+            this.borrarProducto.Text = "Borrar";
+            this.borrarProducto.UseVisualStyleBackColor = true;
+            this.borrarProducto.Click += new System.EventHandler(this.borrarProducto_Click);
+            // 
+            // actualizarProducto
+            // 
+            this.actualizarProducto.Location = new System.Drawing.Point(903, 204);
+            this.actualizarProducto.Name = "actualizarProducto";
+            this.actualizarProducto.Size = new System.Drawing.Size(244, 36);
+            this.actualizarProducto.TabIndex = 7;
+            this.actualizarProducto.Text = "Actualizar";
+            this.actualizarProducto.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 32);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1153, 587);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Ventas";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1161, 623);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 59;
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripcionDataGridViewTextBoxColumn.Width = 128;
+            // 
+            // precioUnitarioDataGridViewTextBoxColumn
+            // 
+            this.precioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "PrecioUnitario";
+            this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "PrecioUnitario";
+            this.precioUnitarioDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.precioUnitarioDataGridViewTextBoxColumn.Name = "precioUnitarioDataGridViewTextBoxColumn";
+            this.precioUnitarioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.precioUnitarioDataGridViewTextBoxColumn.Width = 144;
+            // 
+            // productosBindingSource
+            // 
+            this.productosBindingSource.DataSource = typeof(AccesoDatos.Entidades.Productos);
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nombreDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataSource = typeof(AccesoDatos.Entidades.Clientes);
+            // 
+            // borrarCliente
+            // 
+            this.borrarCliente.Location = new System.Drawing.Point(970, 106);
+            this.borrarCliente.Name = "borrarCliente";
+            this.borrarCliente.Size = new System.Drawing.Size(180, 36);
+            this.borrarCliente.TabIndex = 4;
+            this.borrarCliente.Text = "Borrar";
+            this.borrarCliente.UseVisualStyleBackColor = true;
+            this.borrarCliente.Click += new System.EventHandler(this.borrarCliente_Click);
             // 
             // Form1
             // 
@@ -225,13 +343,15 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = " ";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientesGrid)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductosGrid)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,21 +359,31 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.BindingSource productosBindingSource;
+        private System.Windows.Forms.BindingSource clientesBindingSource;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView ClientesGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button actualizarProducto;
+        private System.Windows.Forms.Button borrarProducto;
+        private System.Windows.Forms.Button agregarProducto;
+        private System.Windows.Forms.TextBox priceText;
+        private System.Windows.Forms.TextBox descriptionText;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView ProductosGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource productosBindingSource;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Button borrarCliente;
     }
 }
 
