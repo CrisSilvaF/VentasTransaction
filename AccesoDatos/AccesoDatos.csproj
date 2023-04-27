@@ -46,10 +46,10 @@
     <Compile Include="Controladores\AccesoFolios.cs" />
     <Compile Include="Controladores\AccesoProductos.cs" />
     <Compile Include="Controladores\AccesoVentas.cs" />
+    <Compile Include="Controladores\ProductoExistencia.cs" />
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="Entidades\Folios.cs" />
     <Compile Include="Entidades\Producto.cs" />
-    <Compile Include="Entidades\ProductoExistencia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entidades\Venta.cs" />
     <Compile Include="Entidades\VentaDetalle.cs" />

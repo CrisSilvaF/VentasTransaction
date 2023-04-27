@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace VentasTransaction
 {
@@ -20,6 +21,7 @@ namespace VentasTransaction
             {
                 CargarProductos();
                 CargarClientes();
+                CargarExistencias();
             }
             catch(Exception ex)
             {
@@ -45,14 +47,19 @@ namespace VentasTransaction
             ClientesGrid.DataSource = dt;
         }
 
+        private void CargarExistencias()
+        {
+            ProductoExistencia existencias = new ProductoExistencia();
+            SqlDataAdapter adapter = existencias.ObtenerExistencias();
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            ProductoExistenciaGrid.DataSource = dt;
+            ExistenciasGrid.DataSource = dt;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            string client = textBox2.Text;
-            if (!string.IsNullOrEmpty(client))
-            {
-                AgregarCliente(client);
-                CargarClientes();
-            }
+            
             
         }
 
@@ -78,7 +85,26 @@ namespace VentasTransaction
             }
             catch(Exception ex)
             {
+                throw new Exception(ex.Message);
+            }
+        }
 
+        public void EditarCliente()
+        {
+            if(ClientesGrid.SelectedRows.Count > 0)
+            {
+                int clienteId;
+                if (int.TryParse(ClientesGrid.SelectedRows[0].Cells[0].Value.ToString(), out clienteId))
+                {
+                    AccesoClientes accesoClientes = new AccesoClientes();
+                    string nombre = InputBox.ShowDialog("Nuevo valor::", "Editar cliente");
+                    if (string.IsNullOrWhiteSpace(nombre))
+                    {
+                        accesoClientes.ActualizarCliente(clienteId, nombre);
+                        CargarClientes();
+                    }
+                    
+                }
             }
         }
 
@@ -104,6 +130,7 @@ namespace VentasTransaction
             }
             
         }
+
 
         //Debemos reubicar este metodo 
         private void GuardarVenta()
@@ -171,6 +198,40 @@ namespace VentasTransaction
         private void borrarCliente_Click(object sender, EventArgs e)
         {
             BorrarCLiente();
+        }
+
+        private void actualizarCliente_Click(object sender, EventArgs e)
+        {
+            EditarCliente();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string client = textBox2.Text;
+            if (!string.IsNullOrEmpty(client))
+            {
+                AgregarCliente(client);
+                CargarClientes();
+            }
+        }
+
+        private void EditarExistencia_Click(object sender, EventArgs e)
+        {
+            //if (ExistenciasGrid.SelectedRows.Count > 0)
+            //{
+                int ExistenciaId;
+                if (int.TryParse(ExistenciasGrid.SelectedRows[0].Cells[0].Value.ToString(), out ExistenciaId))
+                {
+                    ProductoExistencia productoExistencia = new ProductoExistencia();
+                    decimal valor;
+                    if (decimal.TryParse(InputBox.ShowDialog("Nuevo Valor:", "Editar Existencia"), out valor))
+                    {
+                        productoExistencia.ActualizarExistencia(ExistenciaId, valor);
+                        CargarExistencias();
+                    }
+
+                }
+            //}
         }
     }
 }

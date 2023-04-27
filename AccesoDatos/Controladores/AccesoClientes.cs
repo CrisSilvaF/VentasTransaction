@@ -100,27 +100,36 @@ namespace AccesoDatos.Controladores
                 throw new Exception(ex.Message);
             }
         }
-        public void ActualizarCliente(Clientes cliente)
+        public void ActualizarCliente(int id, string nombre)
         {
             try
             {
                 // Query para Actualizar un cliente //
-                string query = "UPDATE Clientes SET Nombre = @Nombre";
+                string query = "UPDATE Clientes SET Nombre = @Nombre WHERE Id= @Id";
 
-                using (SqlConnection con = new SqlConnection(query))
+                using (SqlConnection con = new SqlConnection(Conexion.ConnectionString))
                 {
-                    SqlTransaction transaction = con.BeginTransaction();
                     con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    SqlTransaction transaction = con.BeginTransaction();
+                    try
                     {
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Transaction = transaction;
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Transaction = transaction;
 
-                        cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
+                            cmd.Parameters.AddWithValue("@Nombre", nombre);
+                            cmd.Parameters.AddWithValue("@Id", id);
 
-                        cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
+                        }
+                        transaction.Commit();
                     }
+                    catch(Exception ex)
+                    {
+                        transaction.Rollback();
+                    }
+                    
                 }
             }
             catch (Exception ex)

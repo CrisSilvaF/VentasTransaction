@@ -94,7 +94,7 @@ namespace AccesoDatos.Controladores
         {
             try
             {
-                string query = "DELETE FROM Productos where Id = @Id";
+                string query = "DELETE FROM Existencias WHERE ProductoId = @Id; DELETE FROM Productos where Id = @Id";
 
                 using (SqlConnection con = new SqlConnection(Conexion.ConnectionString))
                 {
