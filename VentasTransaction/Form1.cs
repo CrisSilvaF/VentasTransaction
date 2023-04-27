@@ -26,6 +26,14 @@ namespace VentasTransaction
             
         }
 
+        private void AgregarCliente(string nombreCliente)
+        {
+            Clientes cliente = new Clientes();
+            cliente.Nombre = nombreCliente;
+            AccesoClientes accesoClientes = new AccesoClientes();
+            accesoClientes.CrearCliente(cliente);
+        }
+
         private void ObtenerListaProductos()
         {
             AccesoProductos accesoProductos = new AccesoProductos();
@@ -37,13 +45,7 @@ namespace VentasTransaction
             }
         }
 
-        private void AgregarCliente(string nombreCliente)
-        {
-            Clientes cliente = new Clientes();
-            cliente.Nombre = nombreCliente;
-            AccesoClientes accesoClientes = new AccesoClientes();
-            accesoClientes.CrearCliente(cliente);
-        }
+        
 
         private void GuardarProducto()
         {
