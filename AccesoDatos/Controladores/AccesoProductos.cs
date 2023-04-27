@@ -60,16 +60,16 @@ namespace AccesoDatos.Controladores
             }
         }
 
-        /*public void ActualizarProducto(Productos producto)
+        public void ActualizarProducto(Productos producto)
         {
             try
             {
-                string query = "UPDATE Existencias SET Descripcion = @Descripcion, PrecioUnitario = @PrecioUnitario WHERE Id = @Id";
+                string query = "UPDATE Productos SET Descripcion = @Descripcion, PrecioUnitario = @PrecioUnitario WHERE Id = @Id";
 
-                using (SqlConnection con = new SqlConnection(query))
+                using (SqlConnection con = new SqlConnection(Conexion.ConnectionString))
                 {
-                    SqlTransaction transaction = con.BeginTransaction();
                     con.Open();
+                    SqlTransaction transaction = con.BeginTransaction();
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
@@ -88,17 +88,18 @@ namespace AccesoDatos.Controladores
             {
                 throw new Exception(ex.Message);
             }
-        }*/
+        }
+
         public void EliminarProducto(int id)
         {
             try
             {
-                string query = "DELETE FROM Existencias where Id = @Id";
+                string query = "DELETE FROM Productos where Id = @Id";
 
                 using (SqlConnection con = new SqlConnection(query))
                 {
-                    SqlTransaction transaction = con.BeginTransaction();
                     con.Open();
+                    SqlTransaction transaction = con.BeginTransaction();
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
