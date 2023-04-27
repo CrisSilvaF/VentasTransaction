@@ -18,7 +18,12 @@ namespace VentasTransaction
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ObtenerListaProductos();
+            string client = textBox2.Text;
+            if (!string.IsNullOrEmpty(client))
+            {
+                AgregarCliente(client);
+            }
+            
         }
 
         private void ObtenerListaProductos()
@@ -32,10 +37,10 @@ namespace VentasTransaction
             }
         }
 
-        private void CrearCliente()
+        private void AgregarCliente(string nombreCliente)
         {
             Clientes cliente = new Clientes();
-            cliente.Nombre = "NombrePrueba";
+            cliente.Nombre = nombreCliente;
             AccesoClientes accesoClientes = new AccesoClientes();
             accesoClientes.CrearCliente(cliente);
         }

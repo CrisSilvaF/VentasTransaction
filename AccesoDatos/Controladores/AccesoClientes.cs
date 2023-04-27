@@ -42,7 +42,6 @@ namespace AccesoDatos.Controladores
                         transaction.Rollback();
                         throw new Exception(ex.Message);
                     }
-                    
                 }
 
             }

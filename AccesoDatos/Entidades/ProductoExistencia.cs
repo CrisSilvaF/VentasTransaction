@@ -48,7 +48,6 @@ namespace AccesoDatos.Entidades
                     cmd.Parameters.AddWithValue("@Existencia", 0);
                     cmd.ExecuteNonQuery();
                 }
-                transaction.Commit();
             }
             catch(Exception ex)
             {

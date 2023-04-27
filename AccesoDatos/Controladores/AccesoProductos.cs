@@ -45,7 +45,7 @@ namespace AccesoDatos.Controladores
                             ProductoExistencia productoExistencia = new ProductoExistencia();
                             productoExistencia.AgregarExistenciaEnCero(con, transaction, idProducto);
                         }
-                        //transaction.Commit();
+                        transaction.Commit();
                     }catch (Exception ex)
                     {
                         transaction.Rollback();
