@@ -22,6 +22,7 @@ namespace VentasTransaction
                 CargarProductos();
                 CargarClientes();
                 CargarExistencias();
+                InitConceptos();
             }
             catch(Exception ex)
             {
@@ -131,9 +132,13 @@ namespace VentasTransaction
             
         }
 
+        private void GuardarVenta()
+        {
+
+        }
 
         //Debemos reubicar este metodo 
-        private void GuardarVenta()
+        private void GuardarVentaOld()
         {
             int folioActual = 0;
             Venta venta = new Venta();
@@ -168,6 +173,7 @@ namespace VentasTransaction
             {
                 GuardarProducto();
                 CargarProductos();
+                CargarExistencias();
             }
             catch (Exception ex)
             {
@@ -186,6 +192,7 @@ namespace VentasTransaction
                     AccesoProductos accesoProductos = new AccesoProductos();
                     accesoProductos.EliminarProducto(productId);
                     CargarProductos();
+                    CargarExistencias();
                 }
             }
             catch (Exception ex)
@@ -232,6 +239,81 @@ namespace VentasTransaction
 
                 }
             //}
+        }
+
+        private void generarVenta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int folioActual = 0;
+                Venta venta = new Venta();
+                venta.CLienteId = 1;
+                venta.Folio = folioActual + 1;
+                venta.Fecha = DateTime.Now;
+
+                for (int i = 0; i < ProductoExistenciaGrid.RowCount; i++)
+                {
+                    VentaDetalle concepto = new VentaDetalle();
+                    concepto.ProductoId = int.Parse(conceptosGrid.Rows[i].Cells[0].Value.ToString());
+                    concepto.Descripcion = conceptosGrid.Rows[i].Cells[1].Value.ToString();
+                    concepto.Cantidad = decimal.Parse(conceptosGrid.Rows[i].Cells[2].Value.ToString());
+                    concepto.PrecioUnitario = decimal.Parse(conceptosGrid.Rows[i].Cells[3].Value.ToString());
+                    concepto.Importe = decimal.Parse(conceptosGrid.Rows[i].Cells[4].Value.ToString());
+                    venta.Conceptos.Add(concepto);
+                }
+                AccesoVentas accesoVentas = new AccesoVentas();
+                accesoVentas.crearVenta(venta);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void agregarConcepto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int rowIndex = conceptosGrid.Rows.Add();
+                DataGridViewRow row = conceptosGrid.Rows[rowIndex];
+                row.Cells["Id"].Value = ProductoExistenciaGrid.SelectedRows[0].Cells[0].Value;//
+                row.Cells["Descripcion"].Value = ProductoExistenciaGrid.SelectedRows[0].Cells[1].Value;
+                decimal existencia = decimal.Parse(ProductoExistenciaGrid.SelectedRows[0].Cells[0].Value.ToString());
+                decimal cantidad;
+                if(decimal.TryParse(cantidadText.Text, out cantidad)){
+                    if(cantidad > existencia ) { cantidad = existencia;}
+                    if (cantidad <= 0) { cantidad = 1; }
+
+                    row.Cells["Cantidad"].Value = cantidad;
+                }
+                else
+                {
+                    row.Cells["Cantidad"].Value = 1;
+                }
+                decimal precio;
+                if (decimal.TryParse(ProductoExistenciaGrid.SelectedRows[0].Cells[2].Value.ToString(), out precio))
+                {
+                    row.Cells["Precio Unitario"].Value = precio;
+                }
+
+                row.Cells["Importe"].Value = cantidad * precio;
+
+                MessageBox.Show("Agregado!", "");
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error", "");
+                throw new Exception(ex.Message);
+            }
+            
+        }
+
+        private void InitConceptos()
+        {
+            conceptosGrid.Columns.Add("Id", "Id");
+            conceptosGrid.Columns.Add("Descripcion", "Descripcion");
+            conceptosGrid.Columns.Add("Cantidad", "Cantidad");
+            conceptosGrid.Columns.Add("Precio Unitario", "Precio Unitario");
+            conceptosGrid.Columns.Add("Importe", "Importe");
         }
     }
 }

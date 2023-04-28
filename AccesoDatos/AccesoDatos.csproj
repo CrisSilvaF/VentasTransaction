@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="Controladores\AccesoClientes.cs" />
+    <Compile Include="Controladores\AccesoConceptos.cs" />
     <Compile Include="Controladores\AccesoFolios.cs" />
     <Compile Include="Controladores\AccesoProductos.cs" />
     <Compile Include="Controladores\AccesoVentas.cs" />

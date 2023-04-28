@@ -74,7 +74,7 @@ namespace AccesoDatos.Controladores
         {
             try
             {
-                string query = "SELECT Existencias.Id, Descripcion, PrecioUnitario, Existencia FROM Existencias INNER JOIN Productos ON ProductoId = Productos.Id";
+                string query = "SELECT Productos.Id, Descripcion, PrecioUnitario, Existencia FROM Existencias INNER JOIN Productos ON ProductoId = Productos.Id";
                 SqlDataAdapter productos = new SqlDataAdapter(query, Conexion.ConnectionString);
 
                 return productos;
