@@ -80,12 +80,13 @@ namespace AccesoDatos.Controladores
                                 cmd.Parameters.AddWithValue("@PrecioUnitario", concepto.PrecioUnitario);
                                 cmd.Parameters.AddWithValue("@Importe", concepto.Importe);
                                 cmd.ExecuteNonQuery();
+
                             }
 
-
-                            query = "Update Existencias " +
-                                    "set Existencia = Existencia-@Cantidad " +
-                                    "where ProductoId = @ProductoId";
+                            
+                            query = "UPDATE Existencias " +
+                                    "SET Existencia -= @Cantidad " +
+                                    "WHERE ProductoId = @ProductoId";
 
                             using (SqlCommand cmd = new SqlCommand(query, con))
                             {
@@ -107,6 +108,8 @@ namespace AccesoDatos.Controladores
 
                             cmd.ExecuteNonQuery();
                         }
+
+
 
                         transaction.Commit();
 

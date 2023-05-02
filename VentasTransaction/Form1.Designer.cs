@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.FoliosTab = new System.Windows.Forms.TabPage();
+            this.VentasTab = new System.Windows.Forms.TabPage();
             this.ClientesTab = new System.Windows.Forms.TabPage();
             this.actualizarCliente = new System.Windows.Forms.Button();
             this.borrarCliente = new System.Windows.Forms.Button();
             this.ClientesGrid = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.botonAgregarCliente = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.ProductosTab = new System.Windows.Forms.TabPage();
@@ -46,21 +46,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ProductosGrid = new System.Windows.Forms.DataGridView();
-            this.VentasTab = new System.Windows.Forms.TabPage();
+            this.SeleccionTab = new System.Windows.Forms.TabPage();
+            this.cantidadText = new System.Windows.Forms.TextBox();
+            this.agregarConcepto = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ProductoExistenciaGrid = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.ConceptosTab = new System.Windows.Forms.TabPage();
+            this.borrarConcepto = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.generarVenta = new System.Windows.Forms.Button();
+            this.conceptosGrid = new System.Windows.Forms.DataGridView();
             this.ExistenciasTab = new System.Windows.Forms.TabPage();
             this.EditarExistencia = new System.Windows.Forms.Button();
             this.ExistenciasGrid = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.agregarConcepto = new System.Windows.Forms.Button();
-            this.cantidadText = new System.Windows.Forms.TextBox();
-            this.ConceptosTab = new System.Windows.Forms.TabPage();
-            this.conceptosGrid = new System.Windows.Forms.DataGridView();
-            this.generarVenta = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.borrarConcepto = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,42 +69,50 @@
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ventaDetalleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ventasGrid = new System.Windows.Forms.DataGridView();
+            this.detallesTab = new System.Windows.Forms.TabPage();
+            this.detallesGrid = new System.Windows.Forms.DataGridView();
+            this.VentasTab.SuspendLayout();
             this.ClientesTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientesGrid)).BeginInit();
             this.ProductosTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosGrid)).BeginInit();
-            this.VentasTab.SuspendLayout();
+            this.SeleccionTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductoExistenciaGrid)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.ExistenciasTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExistenciasGrid)).BeginInit();
             this.ConceptosTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.conceptosGrid)).BeginInit();
+            this.ExistenciasTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExistenciasGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventaDetalleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventasGrid)).BeginInit();
+            this.detallesTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.detallesGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // FoliosTab
+            // VentasTab
             // 
-            this.FoliosTab.Location = new System.Drawing.Point(4, 32);
-            this.FoliosTab.Name = "FoliosTab";
-            this.FoliosTab.Size = new System.Drawing.Size(1153, 636);
-            this.FoliosTab.TabIndex = 3;
-            this.FoliosTab.Text = "Folios";
-            this.FoliosTab.UseVisualStyleBackColor = true;
+            this.VentasTab.Controls.Add(this.ventasGrid);
+            this.VentasTab.Location = new System.Drawing.Point(4, 32);
+            this.VentasTab.Name = "VentasTab";
+            this.VentasTab.Size = new System.Drawing.Size(895, 636);
+            this.VentasTab.TabIndex = 3;
+            this.VentasTab.Text = "Ventas";
+            this.VentasTab.UseVisualStyleBackColor = true;
             // 
             // ClientesTab
             // 
             this.ClientesTab.Controls.Add(this.actualizarCliente);
             this.ClientesTab.Controls.Add(this.borrarCliente);
             this.ClientesTab.Controls.Add(this.ClientesGrid);
-            this.ClientesTab.Controls.Add(this.button2);
+            this.ClientesTab.Controls.Add(this.botonAgregarCliente);
             this.ClientesTab.Controls.Add(this.label2);
             this.ClientesTab.Controls.Add(this.textBox2);
             this.ClientesTab.Location = new System.Drawing.Point(4, 32);
             this.ClientesTab.Name = "ClientesTab";
-            this.ClientesTab.Size = new System.Drawing.Size(1153, 636);
+            this.ClientesTab.Size = new System.Drawing.Size(895, 636);
             this.ClientesTab.TabIndex = 2;
             this.ClientesTab.Text = "Clientes";
             this.ClientesTab.UseVisualStyleBackColor = true;
@@ -149,15 +157,15 @@
             this.ClientesGrid.Size = new System.Drawing.Size(956, 575);
             this.ClientesGrid.TabIndex = 3;
             // 
-            // button2
+            // botonAgregarCliente
             // 
-            this.button2.Location = new System.Drawing.Point(970, 64);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 36);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Agregar Cliente";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.botonAgregarCliente.Location = new System.Drawing.Point(970, 64);
+            this.botonAgregarCliente.Name = "botonAgregarCliente";
+            this.botonAgregarCliente.Size = new System.Drawing.Size(180, 36);
+            this.botonAgregarCliente.TabIndex = 2;
+            this.botonAgregarCliente.Text = "Agregar Cliente";
+            this.botonAgregarCliente.UseVisualStyleBackColor = true;
+            this.botonAgregarCliente.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 
@@ -188,7 +196,7 @@
             this.ProductosTab.Location = new System.Drawing.Point(4, 32);
             this.ProductosTab.Name = "ProductosTab";
             this.ProductosTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ProductosTab.Size = new System.Drawing.Size(1153, 636);
+            this.ProductosTab.Size = new System.Drawing.Size(895, 636);
             this.ProductosTab.TabIndex = 1;
             this.ProductosTab.Text = "Productos";
             this.ProductosTab.UseVisualStyleBackColor = true;
@@ -277,20 +285,47 @@
             this.ProductosGrid.Size = new System.Drawing.Size(887, 575);
             this.ProductosGrid.TabIndex = 0;
             // 
-            // VentasTab
+            // SeleccionTab
             // 
-            this.VentasTab.Controls.Add(this.cantidadText);
-            this.VentasTab.Controls.Add(this.agregarConcepto);
-            this.VentasTab.Controls.Add(this.label5);
-            this.VentasTab.Controls.Add(this.label4);
-            this.VentasTab.Controls.Add(this.ProductoExistenciaGrid);
-            this.VentasTab.Location = new System.Drawing.Point(4, 32);
-            this.VentasTab.Name = "VentasTab";
-            this.VentasTab.Padding = new System.Windows.Forms.Padding(3);
-            this.VentasTab.Size = new System.Drawing.Size(1153, 636);
-            this.VentasTab.TabIndex = 0;
-            this.VentasTab.Text = "Ventas";
-            this.VentasTab.UseVisualStyleBackColor = true;
+            this.SeleccionTab.Controls.Add(this.cantidadText);
+            this.SeleccionTab.Controls.Add(this.agregarConcepto);
+            this.SeleccionTab.Controls.Add(this.label5);
+            this.SeleccionTab.Controls.Add(this.label4);
+            this.SeleccionTab.Controls.Add(this.ProductoExistenciaGrid);
+            this.SeleccionTab.Location = new System.Drawing.Point(4, 32);
+            this.SeleccionTab.Name = "SeleccionTab";
+            this.SeleccionTab.Padding = new System.Windows.Forms.Padding(3);
+            this.SeleccionTab.Size = new System.Drawing.Size(1153, 636);
+            this.SeleccionTab.TabIndex = 0;
+            this.SeleccionTab.Text = "Seleccion de productos";
+            this.SeleccionTab.UseVisualStyleBackColor = true;
+            // 
+            // cantidadText
+            // 
+            this.cantidadText.Location = new System.Drawing.Point(985, 30);
+            this.cantidadText.Name = "cantidadText";
+            this.cantidadText.Size = new System.Drawing.Size(149, 26);
+            this.cantidadText.TabIndex = 4;
+            this.cantidadText.Text = "1";
+            // 
+            // agregarConcepto
+            // 
+            this.agregarConcepto.Location = new System.Drawing.Point(985, 62);
+            this.agregarConcepto.Name = "agregarConcepto";
+            this.agregarConcepto.Size = new System.Drawing.Size(149, 36);
+            this.agregarConcepto.TabIndex = 3;
+            this.agregarConcepto.Text = "Agregar";
+            this.agregarConcepto.UseVisualStyleBackColor = true;
+            this.agregarConcepto.Click += new System.EventHandler(this.agregarConcepto_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(981, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Cantidad";
             // 
             // label4
             // 
@@ -318,17 +353,74 @@
             // tabControl1
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl1.Controls.Add(this.VentasTab);
+            this.tabControl1.Controls.Add(this.SeleccionTab);
             this.tabControl1.Controls.Add(this.ConceptosTab);
             this.tabControl1.Controls.Add(this.ProductosTab);
             this.tabControl1.Controls.Add(this.ExistenciasTab);
             this.tabControl1.Controls.Add(this.ClientesTab);
-            this.tabControl1.Controls.Add(this.FoliosTab);
+            this.tabControl1.Controls.Add(this.VentasTab);
+            this.tabControl1.Controls.Add(this.detallesTab);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1161, 672);
             this.tabControl1.TabIndex = 1;
+            // 
+            // ConceptosTab
+            // 
+            this.ConceptosTab.Controls.Add(this.borrarConcepto);
+            this.ConceptosTab.Controls.Add(this.button1);
+            this.ConceptosTab.Controls.Add(this.generarVenta);
+            this.ConceptosTab.Controls.Add(this.conceptosGrid);
+            this.ConceptosTab.Location = new System.Drawing.Point(4, 32);
+            this.ConceptosTab.Name = "ConceptosTab";
+            this.ConceptosTab.Size = new System.Drawing.Size(895, 636);
+            this.ConceptosTab.TabIndex = 5;
+            this.ConceptosTab.Text = "Conceptos";
+            this.ConceptosTab.UseVisualStyleBackColor = true;
+            // 
+            // borrarConcepto
+            // 
+            this.borrarConcepto.Location = new System.Drawing.Point(990, 88);
+            this.borrarConcepto.Name = "borrarConcepto";
+            this.borrarConcepto.Size = new System.Drawing.Size(160, 36);
+            this.borrarConcepto.TabIndex = 3;
+            this.borrarConcepto.Text = "Borrar";
+            this.borrarConcepto.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(990, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(163, 36);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Modificar cantidad";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // generarVenta
+            // 
+            this.generarVenta.Location = new System.Drawing.Point(987, 3);
+            this.generarVenta.Name = "generarVenta";
+            this.generarVenta.Size = new System.Drawing.Size(163, 36);
+            this.generarVenta.TabIndex = 1;
+            this.generarVenta.Text = "Comprar";
+            this.generarVenta.UseVisualStyleBackColor = true;
+            this.generarVenta.Click += new System.EventHandler(this.generarVenta_Click);
+            // 
+            // conceptosGrid
+            // 
+            this.conceptosGrid.AllowUserToAddRows = false;
+            this.conceptosGrid.AllowUserToDeleteRows = false;
+            this.conceptosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.conceptosGrid.Location = new System.Drawing.Point(3, 3);
+            this.conceptosGrid.MultiSelect = false;
+            this.conceptosGrid.Name = "conceptosGrid";
+            this.conceptosGrid.ReadOnly = true;
+            this.conceptosGrid.RowHeadersWidth = 62;
+            this.conceptosGrid.RowTemplate.Height = 28;
+            this.conceptosGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.conceptosGrid.Size = new System.Drawing.Size(978, 630);
+            this.conceptosGrid.TabIndex = 0;
             // 
             // ExistenciasTab
             // 
@@ -365,88 +457,6 @@
             this.ExistenciasGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ExistenciasGrid.Size = new System.Drawing.Size(1141, 582);
             this.ExistenciasGrid.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(981, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 20);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Cantidad";
-            // 
-            // agregarConcepto
-            // 
-            this.agregarConcepto.Location = new System.Drawing.Point(985, 62);
-            this.agregarConcepto.Name = "agregarConcepto";
-            this.agregarConcepto.Size = new System.Drawing.Size(149, 36);
-            this.agregarConcepto.TabIndex = 3;
-            this.agregarConcepto.Text = "Agregar";
-            this.agregarConcepto.UseVisualStyleBackColor = true;
-            this.agregarConcepto.Click += new System.EventHandler(this.agregarConcepto_Click);
-            // 
-            // cantidadText
-            // 
-            this.cantidadText.Location = new System.Drawing.Point(985, 30);
-            this.cantidadText.Name = "cantidadText";
-            this.cantidadText.Size = new System.Drawing.Size(149, 26);
-            this.cantidadText.TabIndex = 4;
-            // 
-            // ConceptosTab
-            // 
-            this.ConceptosTab.Controls.Add(this.borrarConcepto);
-            this.ConceptosTab.Controls.Add(this.button1);
-            this.ConceptosTab.Controls.Add(this.generarVenta);
-            this.ConceptosTab.Controls.Add(this.conceptosGrid);
-            this.ConceptosTab.Location = new System.Drawing.Point(4, 32);
-            this.ConceptosTab.Name = "ConceptosTab";
-            this.ConceptosTab.Size = new System.Drawing.Size(1153, 636);
-            this.ConceptosTab.TabIndex = 5;
-            this.ConceptosTab.Text = "Conceptos";
-            this.ConceptosTab.UseVisualStyleBackColor = true;
-            // 
-            // conceptosGrid
-            // 
-            this.conceptosGrid.AllowUserToAddRows = false;
-            this.conceptosGrid.AllowUserToDeleteRows = false;
-            this.conceptosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.conceptosGrid.Location = new System.Drawing.Point(3, 3);
-            this.conceptosGrid.MultiSelect = false;
-            this.conceptosGrid.Name = "conceptosGrid";
-            this.conceptosGrid.ReadOnly = true;
-            this.conceptosGrid.RowHeadersWidth = 62;
-            this.conceptosGrid.RowTemplate.Height = 28;
-            this.conceptosGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.conceptosGrid.Size = new System.Drawing.Size(978, 630);
-            this.conceptosGrid.TabIndex = 0;
-            // 
-            // generarVenta
-            // 
-            this.generarVenta.Location = new System.Drawing.Point(987, 3);
-            this.generarVenta.Name = "generarVenta";
-            this.generarVenta.Size = new System.Drawing.Size(163, 36);
-            this.generarVenta.TabIndex = 1;
-            this.generarVenta.Text = "Comprar";
-            this.generarVenta.UseVisualStyleBackColor = true;
-            this.generarVenta.Click += new System.EventHandler(this.generarVenta_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(990, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 36);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Modificar cantidad";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // borrarConcepto
-            // 
-            this.borrarConcepto.Location = new System.Drawing.Point(990, 88);
-            this.borrarConcepto.Name = "borrarConcepto";
-            this.borrarConcepto.Size = new System.Drawing.Size(160, 36);
-            this.borrarConcepto.TabIndex = 3;
-            this.borrarConcepto.Text = "Borrar";
-            this.borrarConcepto.UseVisualStyleBackColor = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -505,6 +515,36 @@
             // 
             this.ventaDetalleBindingSource.DataSource = typeof(AccesoDatos.Entidades.VentaDetalle);
             // 
+            // ventasGrid
+            // 
+            this.ventasGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ventasGrid.Location = new System.Drawing.Point(3, 3);
+            this.ventasGrid.Name = "ventasGrid";
+            this.ventasGrid.RowHeadersWidth = 62;
+            this.ventasGrid.RowTemplate.Height = 28;
+            this.ventasGrid.Size = new System.Drawing.Size(1147, 630);
+            this.ventasGrid.TabIndex = 0;
+            // 
+            // detallesTab
+            // 
+            this.detallesTab.Controls.Add(this.detallesGrid);
+            this.detallesTab.Location = new System.Drawing.Point(4, 32);
+            this.detallesTab.Name = "detallesTab";
+            this.detallesTab.Size = new System.Drawing.Size(895, 636);
+            this.detallesTab.TabIndex = 6;
+            this.detallesTab.Text = "Ventas Detalle";
+            this.detallesTab.UseVisualStyleBackColor = true;
+            // 
+            // detallesGrid
+            // 
+            this.detallesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.detallesGrid.Location = new System.Drawing.Point(3, 3);
+            this.detallesGrid.Name = "detallesGrid";
+            this.detallesGrid.RowHeadersWidth = 62;
+            this.detallesGrid.RowTemplate.Height = 28;
+            this.detallesGrid.Size = new System.Drawing.Size(1147, 630);
+            this.detallesGrid.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -516,23 +556,27 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = " ";
+            this.VentasTab.ResumeLayout(false);
             this.ClientesTab.ResumeLayout(false);
             this.ClientesTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientesGrid)).EndInit();
             this.ProductosTab.ResumeLayout(false);
             this.ProductosTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosGrid)).EndInit();
-            this.VentasTab.ResumeLayout(false);
-            this.VentasTab.PerformLayout();
+            this.SeleccionTab.ResumeLayout(false);
+            this.SeleccionTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductoExistenciaGrid)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.ExistenciasTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ExistenciasGrid)).EndInit();
             this.ConceptosTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.conceptosGrid)).EndInit();
+            this.ExistenciasTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ExistenciasGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventaDetalleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventasGrid)).EndInit();
+            this.detallesTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.detallesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -540,12 +584,12 @@
         #endregion
         private System.Windows.Forms.BindingSource productosBindingSource;
         private System.Windows.Forms.BindingSource clientesBindingSource;
-        private System.Windows.Forms.TabPage FoliosTab;
+        private System.Windows.Forms.TabPage VentasTab;
         private System.Windows.Forms.TabPage ClientesTab;
         private System.Windows.Forms.DataGridView ClientesGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button botonAgregarCliente;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TabPage ProductosTab;
@@ -560,7 +604,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TabPage VentasTab;
+        private System.Windows.Forms.TabPage SeleccionTab;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button borrarCliente;
         private System.Windows.Forms.Button actualizarCliente;
@@ -578,6 +622,9 @@
         private System.Windows.Forms.Button generarVenta;
         private System.Windows.Forms.DataGridView conceptosGrid;
         private System.Windows.Forms.BindingSource ventaDetalleBindingSource;
+        private System.Windows.Forms.DataGridView ventasGrid;
+        private System.Windows.Forms.TabPage detallesTab;
+        private System.Windows.Forms.DataGridView detallesGrid;
     }
 }
 

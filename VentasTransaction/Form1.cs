@@ -64,51 +64,6 @@ namespace VentasTransaction
             
         }
 
-        private void AgregarCliente(string nombreCliente)
-        {
-            Clientes cliente = new Clientes();
-            cliente.Nombre = nombreCliente;
-            AccesoClientes accesoClientes = new AccesoClientes();
-            accesoClientes.CrearCliente(cliente);
-        }
-
-        private void BorrarCLiente()
-        {
-            try
-            {
-                int clienteId;
-                if (int.TryParse(ClientesGrid.SelectedRows[0].Cells[0].Value.ToString(), out clienteId))
-                {
-                    AccesoClientes accesoClientes = new AccesoClientes();
-                    accesoClientes.EliminarCliente(clienteId);
-                    CargarClientes();
-                }
-            }
-            catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public void EditarCliente()
-        {
-            if(ClientesGrid.SelectedRows.Count > 0)
-            {
-                int clienteId;
-                if (int.TryParse(ClientesGrid.SelectedRows[0].Cells[0].Value.ToString(), out clienteId))
-                {
-                    AccesoClientes accesoClientes = new AccesoClientes();
-                    string nombre = InputBox.ShowDialog("Nuevo valor::", "Editar cliente");
-                    if (string.IsNullOrWhiteSpace(nombre))
-                    {
-                        accesoClientes.ActualizarCliente(clienteId, nombre);
-                        CargarClientes();
-                    }
-                    
-                }
-            }
-        }
-
         private void GuardarProducto()
         {
             try
@@ -130,41 +85,6 @@ namespace VentasTransaction
 
             }
             
-        }
-
-        private void GuardarVenta()
-        {
-
-        }
-
-        //Debemos reubicar este metodo 
-        private void GuardarVentaOld()
-        {
-            int folioActual = 0;
-            Venta venta = new Venta();
-            venta.CLienteId = 1;
-            venta.Folio = folioActual + 1;
-            venta.Fecha = DateTime.Now;
-
-            VentaDetalle producto1 = new VentaDetalle();
-            producto1.ProductoId = 1;
-            producto1.Cantidad = 1;
-            producto1.Descripcion = "Azucar2 kg";
-            producto1.PrecioUnitario = 27.00m;
-            producto1.Importe = producto1.Cantidad * producto1.PrecioUnitario;
-
-            VentaDetalle producto2 = new VentaDetalle();
-            producto2.ProductoId = 2;
-            producto2.Cantidad = 1;
-            producto2.Descripcion = "Jugo Mango2";
-            producto2.PrecioUnitario = 10.00m;
-            producto2.Importe = producto2.Cantidad * producto2.PrecioUnitario;
-
-            venta.Conceptos.Add(producto1);
-            venta.Conceptos.Add(producto2);
-
-            AccesoVentas accesoVentas = new AccesoVentas();
-            accesoVentas.crearVenta(venta);
         }
 
         private void agregarProducto_Click(object sender, EventArgs e)
@@ -200,6 +120,51 @@ namespace VentasTransaction
                 throw new Exception(ex.Message);
             }
             
+        }
+
+        private void AgregarCliente(string nombreCliente)
+        {
+            Clientes cliente = new Clientes();
+            cliente.Nombre = nombreCliente;
+            AccesoClientes accesoClientes = new AccesoClientes();
+            accesoClientes.CrearCliente(cliente);
+        }
+
+        private void BorrarCLiente()
+        {
+            try
+            {
+                int clienteId;
+                if (int.TryParse(ClientesGrid.SelectedRows[0].Cells[0].Value.ToString(), out clienteId))
+                {
+                    AccesoClientes accesoClientes = new AccesoClientes();
+                    accesoClientes.EliminarCliente(clienteId);
+                    CargarClientes();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void EditarCliente()
+        {
+            if (ClientesGrid.SelectedRows.Count > 0)
+            {
+                int clienteId;
+                if (int.TryParse(ClientesGrid.SelectedRows[0].Cells[0].Value.ToString(), out clienteId))
+                {
+                    AccesoClientes accesoClientes = new AccesoClientes();
+                    string nombre = InputBox.ShowDialog("Nuevo valor::", "Editar cliente");
+                    if (string.IsNullOrWhiteSpace(nombre))
+                    {
+                        accesoClientes.ActualizarCliente(clienteId, nombre);
+                        CargarClientes();
+                    }
+
+                }
+            }
         }
 
         private void borrarCliente_Click(object sender, EventArgs e)
@@ -251,7 +216,7 @@ namespace VentasTransaction
                 venta.Folio = folioActual + 1;
                 venta.Fecha = DateTime.Now;
 
-                for (int i = 0; i < ProductoExistenciaGrid.RowCount; i++)
+                for (int i = 0; i < conceptosGrid.RowCount; i++)
                 {
                     VentaDetalle concepto = new VentaDetalle();
                     concepto.ProductoId = int.Parse(conceptosGrid.Rows[i].Cells[0].Value.ToString());
@@ -263,10 +228,14 @@ namespace VentasTransaction
                 }
                 AccesoVentas accesoVentas = new AccesoVentas();
                 accesoVentas.crearVenta(venta);
+                conceptosGrid.Rows.Clear();
+                MessageBox.Show("Compra exitosa!", "Compra");
+                CargarProductos();
+                CargarExistencias();
             }
             catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -288,6 +257,7 @@ namespace VentasTransaction
                 }
                 else
                 {
+                    cantidad = 1;
                     row.Cells["Cantidad"].Value = 1;
                 }
                 decimal precio;
@@ -299,6 +269,7 @@ namespace VentasTransaction
                 row.Cells["Importe"].Value = cantidad * precio;
 
                 MessageBox.Show("Agregado!", "");
+                cantidadText.Text = "1";
             }catch(Exception ex)
             {
                 MessageBox.Show("Error", "");
